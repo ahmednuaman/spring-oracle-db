@@ -7,8 +7,6 @@ import java.time.ZonedDateTime;
 public class Read {
 
     private final String NTName;
-    private final String application;
-    private final String sheetId;
     private final String currentSelections;
     private final String commentary;
     private final String payload;
@@ -22,8 +20,6 @@ public class Read {
                 JSONObject payload,
                 ZonedDateTime datetime) {
         this.NTName = NTName;
-        this.application = application;
-        this.sheetId = sheetId;
         this.currentSelections = currentSelections;
         this.commentary = commentary;
         this.payload = payload.toString();
@@ -32,14 +28,6 @@ public class Read {
 
     public String getNTName() {
         return NTName;
-    }
-
-    public String getApplication() {
-        return application;
-    }
-    
-    public String getSheetId() {
-        return sheetId;
     }
     
     public String getCurrentSelections() {
