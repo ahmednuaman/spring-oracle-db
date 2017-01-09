@@ -2,27 +2,32 @@ package com.ahmednuaman;
 
 import org.json.JSONObject;
 
-public class Write {
+import java.time.ZonedDateTime;
+
+public class Read {
 
     private final String NTName;
     private final String application;
     private final String sheetId;
     private final String currentSelections;
     private final String commentary;
-    private final JSONObject payload;
+    private final String payload;
+    private final String datetime;
 
-    public Write(String NTName,
-                 String application,
-                 String sheetId,
-                 String currentSelections,
-                 String commentary,
-                 String payload) {
+    public Read(String NTName,
+                String application,
+                String sheetId,
+                String currentSelections,
+                String commentary,
+                JSONObject payload,
+                ZonedDateTime datetime) {
         this.NTName = NTName;
         this.application = application;
         this.sheetId = sheetId;
         this.currentSelections = currentSelections;
         this.commentary = commentary;
-        this.payload = new JSONObject(payload);
+        this.payload = payload.toString();
+        this.datetime = datetime.toString();
     }
 
     public String getNTName() {
@@ -45,8 +50,11 @@ public class Write {
         return commentary;
     }
     
-    public JSONObject getPayload() {
+    public String getPayload() {
         return payload;
     }
-    
+
+    public String getDatetime() {
+        return datetime;
+    }
 }
