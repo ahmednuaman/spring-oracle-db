@@ -2,7 +2,7 @@ package com.ahmednuaman.model;
 
 import org.json.JSONObject;
 
-public class Write {
+public class WriteRequest {
 
     private final String NTName;
     private final String application;
@@ -11,12 +11,12 @@ public class Write {
     private final String commentary;
     private final JSONObject payload;
 
-    public Write(String NTName,
-                 String application,
-                 String sheetId,
-                 String currentSelections,
-                 String commentary,
-                 String payload) {
+    public WriteRequest(String NTName,
+                        String application,
+                        String sheetId,
+                        String currentSelections,
+                        String commentary,
+                        String payload) {
         this.NTName = NTName;
         this.application = application;
         this.sheetId = sheetId;

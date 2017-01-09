@@ -1,0 +1,48 @@
+package com.ahmednuaman.repository.impl;
+
+import com.ahmednuaman.model.Read;
+import com.ahmednuaman.model.ReadRequest;
+import com.ahmednuaman.model.WriteRequest;
+import com.ahmednuaman.repository.CommentRepository;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.time.ZonedDateTime;
+import java.util.List;
+
+public class CommentJDBCRepository implements CommentRepository {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    @Value("${spring.datasource.table}")
+    private String table;
+
+    @Autowired
+    public CommentJDBCRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public void write(WriteRequest writeRequest) {
+
+    }
+
+    @Override
+    public List<Read> read(ReadRequest readRequest) {
+        String sql = "SELECT * FROM ${table} WHERE application = `${readRequest.application}` AND sheetId = `${readRequest.sheetId}`";
+
+        return jdbcTemplate.query(sql,
+                (result, rows) ->
+                        new Read(result.getString("NTName"),
+                                 result.getString("application"),
+                                 result.getString("sheetId"),
+                                 result.getString("currentSelections"),
+                                 result.getString("commentary"),
+                                 new JSONObject(result.getBlob("payload")),
+                                 ZonedDateTime.parse(result.getString("datetime")))
+        );
+    }
+
+}

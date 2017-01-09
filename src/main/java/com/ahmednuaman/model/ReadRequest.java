@@ -6,7 +6,8 @@ public class ReadRequest {
 
     private final String application;
     private final String sheetId;
-    private int page;
+    private int page = 0;
+    private int count = 25;
     private ZonedDateTime since;
 
     public ReadRequest(String application,
@@ -31,11 +32,19 @@ public class ReadRequest {
         this.page = page;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public ZonedDateTime getSince() {
         return since;
     }
 
-    public void setSince(ZonedDateTime since) {
-        this.since = since;
+    public void setSince(String since) {
+        this.since = ZonedDateTime.parse(since);
     }
 }
