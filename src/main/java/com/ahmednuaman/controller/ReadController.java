@@ -1,5 +1,6 @@
-package com.ahmednuaman;
+package com.ahmednuaman.controller;
 
+import com.ahmednuaman.model.Read;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,7 @@ public class ReadController {
                      @RequestParam(value = "sheetId") String sheetId,
                      @RequestParam(value = "NTName") String NTName,
                      @RequestParam(value = "sessionTicket") String sessionTicket) {
-        
+
     }
 
 }

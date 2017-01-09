@@ -1,4 +1,4 @@
-package com.ahmednuaman;
+package com.ahmednuaman.model;
 
 import org.json.JSONObject;
 

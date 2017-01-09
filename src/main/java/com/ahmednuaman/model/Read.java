@@ -1,4 +1,4 @@
-package com.ahmednuaman;
+package com.ahmednuaman.model;
 
 import org.json.JSONObject;
 
@@ -29,7 +29,7 @@ public class Read {
     public String getNTName() {
         return NTName;
     }
-    
+
     public String getCurrentSelections() {
         return currentSelections;
     }
