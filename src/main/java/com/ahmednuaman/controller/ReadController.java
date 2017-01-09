@@ -20,20 +20,20 @@ public class ReadController {
                            @RequestParam(value = "sheetId") String sheetId,
                            @RequestParam(value = "NTName") String NTName,
                            @RequestParam(value = "sessionTicket") String sessionTicket,
-                           @RequestParam(value = "count", required = false) int count,
-                           @RequestParam(value = "page", required = false) int page,
+                           @RequestParam(value = "count", required = false) Integer count,
+                           @RequestParam(value = "page", required = false) Integer page,
                            @RequestParam(value = "since", required = false) String since) {
         ReadRequest readRequest = new ReadRequest(applicationId, sheetId);
 
-        if (count) {
+        if (count != null) {
             readRequest.setCount(count);
         }
 
-        if (page) {
+        if (page != null) {
             readRequest.setPage(page);
         }
 
-        if (since) {
+        if (since != null) {
             readRequest.setSince(since);
         }
 
