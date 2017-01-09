@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
@@ -28,6 +29,9 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	compile('org.springframework.boot:spring-boot-starter-jersey')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile group: 'org.json', name: 'json', version: '20160810'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
