@@ -6,8 +6,8 @@ public class ReadRequest {
 
     private final String application;
     private final String sheetId;
-    private int page = 0;
-    private int count = 25;
+    private Integer page = 0;
+    private Integer count = 25;
     private ZonedDateTime since;
 
     public ReadRequest(String application,
@@ -24,20 +24,32 @@ public class ReadRequest {
         return sheetId;
     }
 
-    public int getPage() {
+    public boolean hasPage() {
+        return page != null;
+    }
+
+    public Integer getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public int getCount() {
+    public boolean hasCount() {
+        return count != null;
+    }
+
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public boolean hasSince() {
+        return since != null;
     }
 
     public ZonedDateTime getSince() {

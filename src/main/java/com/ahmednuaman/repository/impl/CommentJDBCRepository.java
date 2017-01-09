@@ -31,7 +31,21 @@ public class CommentJDBCRepository implements CommentRepository {
 
     @Override
     public List<Read> read(ReadRequest readRequest) {
-        String sql = "SELECT * FROM ${table} WHERE application = `${readRequest.application}` AND sheetId = `${readRequest.sheetId}`";
+        String sql = String.format(
+                "SELECT * FROM %s WHERE application = `%s` AND sheetId = `%s`",
+                table,
+                readRequest.getApplication(),
+                readRequest.getSheetId());
+
+        if (readRequest.hasSince()) {
+            sql += String.format(" AND datetime >= `%s`", readRequest.getSince().toString());
+        }
+
+        sql += " ORDER BY datetime DESC";
+
+        if (readRequest.hasCount()) {
+            sql = String.format("SELECT * FROM (%s) WHERE ROWNUM <= %s", sql, readRequest.getCount());
+        }
 
         return jdbcTemplate.query(sql,
                 (result, rows) ->
